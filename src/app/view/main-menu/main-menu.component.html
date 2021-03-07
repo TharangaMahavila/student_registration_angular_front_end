@@ -1,0 +1,401 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 content"style="padding:0;margin:0;">
+      <!--Navbar-->
+      <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green" [containerInside]="false">
+
+        <!-- Navbar brand -->
+        <mdb-navbar-brand><a class="navbar-brand" href="#">Finetech</a></mdb-navbar-brand>
+
+        <!-- Collapsible content -->
+        <links>
+
+          <!-- Links -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a routerLink="/main-menu" class="nav-link" mdbWavesEffect><mdb-icon fas icon="user-graduate"></mdb-icon> Students</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/courses" class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="book"></mdb-icon>Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="envelope"></mdb-icon> Contact<span class="sr-only">(current)</span></a>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown" dropdown>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
+              <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                <a class="dropdown-item waves-light" mdbWavesEffect>My account</a>
+                <a class="dropdown-item waves-light" mdbWavesEffect>Log out</a>
+              </div>
+            </li>
+
+          </ul>
+          <!-- Links -->
+        </links>
+        <!-- Collapsible content -->
+
+      </mdb-navbar>
+      <!--/.Navbar-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5 mt-4 mb-4">
+      <div class="row container formSection">
+        <div class="login-wrapper">
+          <mat-card class="box">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <h2>Student Registration</h2>
+              </div>
+            </div>
+            <form class="example-form" style="font-size: 14px;">
+              <mat-card-content>
+
+                <!--Registration Number field start here-->
+                <div class="row">
+                  <div class="col-12">
+                    <small [style.color]="'red'">This field is required</small>
+                    <mat-form-field appearance="outline" [style.width.%]=100>
+                      <mat-label>Registration Number</mat-label>
+                      <input matInput placeholder="Ex: S001" required >
+                    </mat-form-field>
+                  </div>
+                </div>
+                <!--Registration Number field end here-->
+
+                <!--Start Name fields here-->
+                <div class="row">
+
+                  <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]=100>
+                      <mat-label>First name</mat-label>
+                      <input matInput>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" [style.width.%]=100>
+                      <mat-label>Last Name </mat-label>
+                      <input matInput>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+                <!--End Name fields here-->
+
+                <!--Address Fileds start here-->
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <mat-form-field [style.width.%]=100>
+                      <mat-label>Street Number</mat-label>
+                      <input matInput placeholder="ex.No 01">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <mat-form-field [style.width.%]=100>
+                      <mat-label>1St Street</mat-label>
+                      <input matInput placeholder="ex.1St lane">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <mat-form-field [style.width.%]=100>
+                      <mat-label>2nd Street</mat-label>
+                      <input matInput placeholder="Ex.Kodagoda">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <mat-form-field [style.width.%]=100>
+                      <mat-label>Town</mat-label>
+                      <input matInput placeholder="Ex.Imaduwa">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <!--Address Fileds end here-->
+
+                <!--Telephone field start here-->
+                <div class="row">
+                  <div class="col-12">
+                    <mat-form-field>
+                      <mat-label>Telephone</mat-label>
+                      <input type="tel" matInput placeholder="0771234567">
+                      <mat-icon matSuffix>mode_edit</mat-icon>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <!--Telephone field end here-->
+
+                <!--Courses field start here-->
+                <div class="row">
+                  <div class="col-12 d-flex align-items-center">
+                    <mat-form-field appearance="fill" [style.width.%]=100>
+                      <mat-label>Courses</mat-label>
+                      <select matNativeControl [(ngModel)]="selectedCourse" name="courses">
+                        <option *ngFor="let course of courses" [ngValue]="course">
+                          {{course.name}}
+                        </option>
+                      </select>
+                    </mat-form-field>
+                    <button mat-stroked-button class="btn-block btn-select-course button" (click)="addToCourseList()">Select</button>
+                    <button mat-fab color="primary" class="add-course-button">
+                      <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <!--Courses field end here-->
+
+                <!--Selected courses field start here-->
+                <div class="row">
+                  <div class="col-12">
+                    <div class="selected-courses">
+                      <div *ngFor="let course of selectedCourseList">{{course.name}}</div>
+                    </div>
+                  </div>
+                </div>
+                <!--Selected courses field end here-->
+
+              </mat-card-content>
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                  <button mat-stroked-button class="btn-block btn-register button" [style.width.%]=50>Register</button>
+                </div>
+              </div>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <div class="col-7 mt-4 mb-4">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="contact">
+            <th mat-header-cell *matHeaderCellDef> Contact </th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          </ng-container>
+
+          <!--View Details column-->
+          <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef> Details </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button color="primary">View Details</button>
+            </td>
+          </ng-container>
+
+          <!--Delete Student column-->
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-fab color="primary" class="deleteButton">
+                <mat-icon class="deleteIcon">delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[8, 10, 15]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12"style="padding:0;margin:0">
+      <!-- Footer -->
+      <footer class="page-footer font-small blue-grey lighten-5 pt-1">
+
+<!--        <div style="background-color: #21d192;">-->
+<!--          <div class="container">-->
+
+            <!-- Grid row-->
+<!--            <div class="row py-4 d-flex align-items-center">-->
+
+              <!-- Grid column -->
+<!--              <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">-->
+<!--                <h6 class="mb-0">Get connected with us on social networks!</h6>-->
+<!--              </div>-->
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+<!--              <div class="col-md-6 col-lg-7 text-center text-md-right">-->
+
+<!--                &lt;!&ndash; Facebook &ndash;&gt;-->
+<!--                <a class="fb-ic">-->
+<!--                  <mdb-icon fab icon="facebook" class="white-text mr-4"></mdb-icon>-->
+<!--                </a>-->
+<!--                &lt;!&ndash; Twitter &ndash;&gt;-->
+<!--                <a class="tw-ic">-->
+<!--                  <mdb-icon fab icon="twitter" class="white-text mr-4"></mdb-icon>-->
+<!--                </a>-->
+<!--                &lt;!&ndash; Google +&ndash;&gt;-->
+<!--                <a class="gplus-ic">-->
+<!--                  <mdb-icon fab fab icon="google-plus" class="white-text mr-4"></mdb-icon>-->
+<!--                </a>-->
+<!--                &lt;!&ndash;Linkedin &ndash;&gt;-->
+<!--                <a class="li-ic">-->
+<!--                  <mdb-icon fab icon="linkedin" class="white-text mr-4"></mdb-icon>-->
+<!--                </a>-->
+<!--                &lt;!&ndash;Instagram&ndash;&gt;-->
+<!--                <a class="ins-ic">-->
+<!--                  <mdb-icon fab icon="instagram" class="white-text mr-4"></mdb-icon>-->
+<!--                </a>-->
+
+<!--              </div>-->
+              <!-- Grid column -->
+
+<!--            </div>-->
+            <!-- Grid row-->
+
+<!--          </div>-->
+<!--        </div>-->
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left mt-5">
+
+          <!-- Grid row -->
+          <div class="row mt-3 dark-grey-text">
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+              <!-- Content -->
+              <h6 class="text-uppercase font-weight-bold">Finetech Consultancy (pvt) Ltd</h6>
+              <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+              <p>We continue to provide academically sound content of the highest caliber and We empower all kinds of educators to teach students by providing the best educational resources in any form or device to be used at home, at school, and everywhere in-between.
+              </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+              <!-- Links -->
+              <h6 class="text-uppercase font-weight-bold">Products</h6>
+              <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+              <p>
+                <a class="dark-grey-text" href="#!">Web development</a>
+              </p>
+              <p>
+                <a class="dark-grey-text" href="#!">Web design</a>
+              </p>
+              <p>
+                <a class="dark-grey-text" href="#!">Graphic design </a>
+              </p>
+              <p>
+                <a class="dark-grey-text" href="#!">Marketing</a>
+              </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+              <!-- Links -->
+              <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+              <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+              <p>
+                <a class="dark-grey-text" href="#!">Your Account</a>
+              </p>
+              <p>
+                <a class="dark-grey-text" href="#!">Students</a>
+              </p>
+              <p>
+                <a class="dark-grey-text" href="#!">Find Courses</a>
+              </p>
+              <p>
+                <a class="dark-grey-text" href="#!">Help</a>
+              </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+              <!-- Links -->
+              <h6 class="text-uppercase font-weight-bold">Contact</h6>
+              <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+              <p>
+                <mdb-icon fas icon="home" class="mr-3"></mdb-icon> Ahangama,Galle,Sri Lanka
+              </p>
+              <p>
+                <mdb-icon fas icon="envelope" class="mr-3"></mdb-icon> tharangamahavila@gmail.com
+              </p>
+              <p>
+                <mdb-icon fas icon="phone" class="mr-3"></mdb-icon> + 071 156 22 88
+              </p>
+
+            </div>
+            <!-- Grid column -->
+
+          </div>
+          <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+       <div class="row d-flex" style="background-color: rgba(3, 201, 169, 1)">
+         <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
+           <a class="dark-grey-text" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+         </div>
+         <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+           <!-- Facebook -->
+           <a class="fb-ic">
+             <mdb-icon fab icon="facebook" class="white-text mr-4"></mdb-icon>
+           </a>
+           <!-- Twitter -->
+           <a class="tw-ic">
+             <mdb-icon fab icon="twitter" class="white-text mr-4"></mdb-icon>
+           </a>
+           <!-- Google +-->
+           <a class="gplus-ic">
+             <mdb-icon fab fab icon="google-plus" class="white-text mr-4"></mdb-icon>
+           </a>
+           <!--Linkedin -->
+           <a class="li-ic">
+             <mdb-icon fab icon="linkedin" class="white-text mr-4"></mdb-icon>
+           </a>
+           <!--Instagram-->
+           <a class="ins-ic">
+             <mdb-icon fab icon="instagram" class="white-text mr-4"></mdb-icon>
+           </a>
+
+         </div>
+       </div>
+        <!-- Copyright -->
+
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+</div>
